@@ -1,1 +1,364 @@
 
+/* ===== ESTILOS GLOBAIS ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #333333;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== CORES DO TEMA (Verde, Roxo e Branco) ===== */
+:root {
+    --verde-principal: #4CAF50;
+    --verde-escuro: #2E7D32;
+    --roxo-principal: #9C27B0;
+    --roxo-claro: #CE93D8;
+    --branco: #ffffff;
+    --cinza-claro: #f5f5f5;
+    --cinza-escuro: #333333;
+}
+
+/* ===== MODO ALTO CONTRASTE ===== */
+body.alto-contraste {
+    background-color: #000000;
+    color: #ffff00;
+}
+
+body.alto-contraste .card-tema,
+body.alto-contraste .card-solucao,
+body.alto-contraste .card-destaque {
+    background-color: #000000;
+    color: #ffff00;
+    border: 2px solid #ffff00;
+}
+
+body.alto-contraste .carta {
+    background-color: #000000;
+    border: 2px solid #ffff00;
+    color: #ffff00;
+}
+
+body.alto-contraste .carta.virada {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+/* ===== CABEÇALHO ===== */
+.cabecalho {
+    background: linear-gradient(135deg, var(--verde-principal), var(--roxo-principal));
+    color: var(--branco);
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.titulo-site {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.subtitulo {
+    font-size: 1.2rem;
+    opacity: 0.95;
+}
+
+/* ===== NAVEGAÇÃO ===== */
+.navegacao {
+    background-color: var(--verde-escuro);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.menu li a {
+    display: block;
+    padding: 15px 25px;
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.menu li a:hover {
+    background-color: var(--roxo-principal);
+}
+
+/* ===== SEÇÕES ===== */
+.secao {
+    padding: 60px 20px;
+}
+
+.secao:nth-child(even) {
+    background-color: var(--cinza-claro);
+}
+
+.secao h2 {
+    color: var(--verde-escuro);
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+/* Cards */
+.card-destaque {
+    background-color: var(--roxo-claro);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.card-tema {
+    background-color: var(--cinza-claro);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card-tema h3 {
+    color: var(--roxo-principal);
+    margin-bottom: 15px;
+}
+
+.card-tema ul {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+/* Grid de soluções */
+.grid-solucoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card-solucao {
+    background-color: var(--branco);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    border-bottom: 4px solid var(--roxo-principal);
+}
+
+.card-solucao:hover {
+    transform: translateY(-5px);
+}
+
+.card-solucao .icone {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.card-solucao h3 {
+    color: var(--verde-escuro);
+    margin-bottom: 10px;
+}
+
+/* ===== JOGO DA MEMÓRIA ===== */
+.jogo-secao {
+    background: linear-gradient(135deg, var(--cinza-claro), #e8f5e9);
+}
+
+.descricao-jogo {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.controle-jogo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btn-reiniciar {
+    background-color: var(--roxo-principal);
+    color: var(--branco);
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.btn-reiniciar:hover {
+    background-color: var(--verde-escuro);
+}
+
+.mensagem-jogo {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--verde-escuro);
+}
+
+.tabuleiro-jogo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.carta {
+    aspect-ratio: 1 / 0.8;
+    background-color: var(--roxo-principal);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    padding: 15px;
+    color: var(--branco);
+}
+
+.carta:hover {
+    transform: scale(1.02);
+    background-color: var(--verde-principal);
+}
+
+.carta.virada {
+    background-color: var(--branco);
+    color: var(--verde-escuro);
+    border: 2px solid var(--verde-principal);
+}
+
+.carta.combinada {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+/* ===== BOTÃO DE ACESSIBILIDADE ===== */
+.botao-acessibilidade {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.btn-acessibilidade {
+    background-color: var(--roxo-principal);
+    color: var(--branco);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
+}
+
+.btn-acessibilidade:hover {
+    background-color: var(--verde-escuro);
+}
+
+.menu-acessibilidade {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    background-color: var(--branco);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+}
+
+.menu-acessibilidade button {
+    background-color: var(--roxo-principal);
+    color: var(--branco);
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-acessibilidade button:hover {
+    background-color: var(--verde-escuro);
+}
+
+/* ===== RODAPÉ ===== */
+.rodape {
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+    .titulo-site {
+        font-size: 1.8rem;
+    }
+    
+    .menu li a {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .tabuleiro-jogo {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .carta {
+        font-size: 0.7rem;
+        padding: 8px;
+    }
+    
+    .secao h2 {
+        font-size: 1.5rem;
+    }
+    
+    .grid-solucoes {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .cabecalho {
+        padding: 40px 15px;
+    }
+    
+    .subtitulo {
+        font-size: 1rem;
+    }
+    
+    .carta {
+        font-size: 0.6rem;
+    }
+}
